@@ -1,0 +1,34 @@
+{
+  "name": "translation",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "description": "a translation demo",
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "action": {
+    "default_title": "图标标题",
+    "default_icon": {
+      "16": "images/icon.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "permissions": [ "activeTab", "storage", "tabs", "contextMenus" ],
+  "background": {
+		"service_worker": "js/background.js"
+	},
+  "content_scripts": [
+    {
+      "js": [
+        "js/inject.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
